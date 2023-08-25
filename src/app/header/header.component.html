@@ -1,0 +1,25 @@
+<mat-toolbar class="toolbar">
+  <div class="home_link" routerLink="posts">
+    <mat-icon class="home_icon">home</mat-icon>
+    <span class="home_link">Posts Table</span>
+  </div>
+  <span class="header-spacer"></span>
+  <button
+    mat-icon-button
+    class="login_button"
+    routerLink="auth"
+    *ngIf="!userService.isLoggedIn(); else personMenu"
+  >
+    <mat-icon>login</mat-icon>
+  </button>
+  <ng-template #personMenu>
+    <div class="user">
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Log out</button>
+      </mat-menu>
+    </div>
+  </ng-template>
+</mat-toolbar>

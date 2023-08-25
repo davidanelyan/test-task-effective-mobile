@@ -1,0 +1,32 @@
+.toolbar {
+  background-color: #0b4f6c;
+  color: #fff;
+  
+  .header-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .home_link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  
+    .home_icon {
+      margin-right: 5px;
+    }
+  }
+  
+  .login_button {
+    color: white;
+  }
+  
+  .user {
+    display: flex;
+    align-items: center;
+  
+    button[matMenuTriggerFor] {
+      color: white;
+    }
+  }
+}
+  

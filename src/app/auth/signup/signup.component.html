@@ -1,0 +1,93 @@
+<div class="container">
+  <h2>Sign up</h2>
+  <form class="signup-form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="signup-full-width">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        placeholder="Ex. pat@example.com"
+        required
+      />
+      <mat-error
+        *ngIf="
+          authForm.controls['email'].hasError('email') &&
+          !authForm.controls['email'].hasError('required') &&
+          authForm.controls['email'].touched
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error
+        *ngIf="
+          authForm.controls['email'].hasError('required') &&
+          authForm.controls['email'].touched
+        "
+      >
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="signup-full-width">
+      <mat-label>Username</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="username"
+        placeholder="davidanelyan"
+        minlength="6"
+      />
+      <mat-error
+        *ngIf="
+          authForm.controls['username'].hasError('required') &&
+          authForm.controls['username'].touched
+        "
+      >
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="signup-full-width">
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="pass"
+        required
+        minlength="6"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="
+          authForm.controls['pass'].hasError('required') &&
+          authForm.controls['pass'].touched
+        "
+      >
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div class="signup-form-buttons">
+      <button
+        mat-raised-button
+        color="primary"
+        class="signup_btn"
+        type="submit"
+      >
+        Creat
+      </button>
+      <button mat-raised-button type="button" routerLink="../login">
+        Log into an existing account
+      </button>
+    </div>
+  </form>
+</div>

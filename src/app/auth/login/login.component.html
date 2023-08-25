@@ -1,0 +1,65 @@
+<div class="container">
+  <h2>Log in</h2>
+  <form class="login-form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="login-full-width">
+      <mat-label>Username</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="username"
+        placeholder="davidanelyan"
+        minlength="6"
+      />
+      <mat-error
+        *ngIf="
+          authForm.controls['username'].hasError('required') &&
+          authForm.controls['username'].touched
+        "
+      >
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="login-full-width">
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="pass"
+        required
+        minlength="6"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="
+          authForm.controls['pass'].hasError('required') &&
+          authForm.controls['pass'].touched
+        "
+      >
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div class="login-form-buttons">
+      <button mat-raised-button color="primary" class="login_btn" type="submit">
+        Log in
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        class="login_btn"
+        routerLink="../signup"
+      >
+        Creat new account
+      </button>
+    </div>
+  </form>
+</div>

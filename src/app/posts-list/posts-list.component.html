@@ -1,0 +1,38 @@
+<mat-drawer-container (backdropClick)="close()" *ngIf="posts">
+  <mat-drawer
+    class="drawer_container"
+    #drawerPost
+    hasBackdrop
+    [mode]="'over'"
+    [position]="'end'"
+  >
+    <button mat-icon-button class="close_btn" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="container" #table>
+      <table class="post_table">
+        <tr class="post_table-head" (click)="scrollToTop()">
+          <th class="post_table-title">№</th>
+          <th class="post_table-title">User Id</th>
+          <th class="post_table-title">Title</th>
+        </tr>
+        <tr class="post_table-body" *ngFor="let post of posts">
+          <td class="post_table-info">{{ post.id }}</td>
+          <td class="post_table-info">{{ post.userId }}</td>
+          <td class="post_table-info" (click)="openDrawer(post.id)">
+            <strong class="info_title"> {{ post.title }} </strong>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+<div class="lds-ring" *ngIf="!posts">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>

@@ -1,0 +1,16 @@
+<mat-card class="post-card" *ngIf="post">
+  <mat-card-header>
+    <p class="header-title">User Id: {{ post.userId }}</p>
+    <span class="header-subtitle">Post №: {{ post.id }} </span>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-title class="content-title"> {{ post.title }} </mat-card-title>
+    <p class="content-subtitle">{{ post.body }}</p>
+  </mat-card-content>
+</mat-card>
+<div class="lds-ring" *ngIf="!post">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
